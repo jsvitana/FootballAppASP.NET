@@ -1,0 +1,83 @@
+﻿@{
+ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Phantom by HTML5 UP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="~/Content/TemplateContent/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- ------------------------------------------------------------------------ -->
+        <!-- Header -->
+        <header id="header" style="display: none;">
+            <div class="inner">
+
+                <!-- Nav -->
+                <nav>
+                    <ul>
+                        <li><a href="#menu">Menu</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+        </header>
+
+        <!-- Just the side nav bar with the responisve page, using asp.nets nav -->
+        <!-- Menu -->
+        <nav id="menu">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="/Home/About">Home</a></li>
+                <li><a href="{{url('/home/')}}">Check Favorite Team</a></li>
+                <li><a href="{{url('/')}}">Change Favorite Team</a></li>
+                <li><a href="{{url('/')}}">Log Out</a></li>
+            </ul>
+        </nav>
+        <!-- ----------------------------------------------------------------------- -->
+
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+                <header style="margin-top: 10%;">
+                    <h1>Welcome to Football</h1>
+                    <p>Here is your personal gamecenter for every NFL game going on this week</p>
+                </header>
+                <section id="test" class="tiles">
+                    <article v-for="(score, index) in object.scores" class="style2">
+                        <span class="image">
+                            <span style="width: 50%;">
+                                <img v-bind:src="'/Content/images/' + object.awayTeamAbbrs[index] + '.png'" alt="" />
+                                <img v-bind:src="'/Content/images/' + object.homeTeamAbbrs[index] + '.png'" alt="" />
+                            </span>
+                        </span>
+                        <a v-bind:href="'/Team/GameStats/' + object.homeTeamAbbrs[index]">
+                            <h1>
+                                {{ score }}
+                            </h1>
+                        </a>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/browser.min.js"></script>
+    <script src="~/Scripts/js/breakpoints.min.js"></script>
+    <script src="~/Scripts/js/util.js"></script>
+    <script src="~/Scripts/js/main.js"></script>
+    <script src="~/Scripts/vue.js"></script>
+    <script src="~/Scripts/main.js"></script>
+
+</body>
+</html>
